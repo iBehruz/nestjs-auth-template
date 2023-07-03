@@ -6,6 +6,7 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../common/contants/constants';
 import { JwtStrategy } from './jwt.strategy';
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [forwardRef(() => UsersModule), PassportModule,  JwtModule.register({
@@ -14,6 +15,7 @@ import { JwtStrategy } from './jwt.strategy';
   })],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
+  controllers: [AuthController]
 })
 
 export class AuthModule {}
